@@ -6,11 +6,65 @@
   <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
 </head>
 <body>
+  <div class="code-box">
+    <div class="text-div"><p>Type!</p></div> 
+    <div class="inner-box"></div>
+
+  </div>
+<style>
+  html {
+    box-sizing: border-box;
+  }
+  
+  *:before, *:after {
+  box-sizing: inherit;
+  }
+
+  body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  background:#372549;
+  min-height: 100vh;
+  background-size: cover;
+  align-items: center;
+  justify-content: center;
+}
+
+.code-box {
+  width: 1000px;
+  height: 650px;
+  border-radius: 5px;
+  background-color: #eacdc2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.inner-box {
+  width: 300px;
+  height: 200px;
+  background-color: #b75d69;
+  border-radius: 5px;
+
+}
+
+.text-div {
+  width: 600px;
+  height: 200px;
+  font-size: 20px;
+  text-align: center;
+  font-family: sans-serif;
+  border: solid 2px black;
+}
+  
+  </style>
   
 <script>
   const pressed = [];
   const secretCode = 'boo';
-
+ 
 
   window.addEventListener('keyup', (e) => {
     console.log(e.key); // logs which key is being pressed
@@ -19,7 +73,7 @@
     if(pressed.join('').includes(secretCode)) {
       cornify_add();
     }
-    console.log(pressed);
+    console.log(pressed.join(''));
   })
 
 
