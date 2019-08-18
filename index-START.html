@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Key Detection</title>
+  <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC&display=swap" rel="stylesheet"> 
   <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
 </head>
 <body>
   <div class="code-box">
     <div class="text-div">Type!</div> 
-    <div class="inner-box"></div>
+    <div class="inner-box"><p></p></div>
 
   </div>
 <style>
@@ -29,6 +30,8 @@
   background-size: cover;
   align-items: center;
   justify-content: center;
+  font-family: 'Bowlby One SC', cursive;
+
 }
 
 .code-box {
@@ -42,24 +45,39 @@
   justify-content: space-evenly;
 }
 
+
+
+
 .inner-box {
   width: 300px;
   height: 200px;
   background-color: #b75d69;
   border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
 }
 
 .text-div {
   width: 600px;
   height: 200px;
-  font-size: 20px;
+  font-size: 80px;
   text-align: center;
-  font-family: sans-serif;
-  border: solid 2px black;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #1a1423;
+}
+
+@keyframes fadeIn { 
+  from { opacity: 0; } 
+}
+
+p{
+  font-size: 40px;
+  animation: fadeIn 1s infinite alternate;
+  color: #1a1423;
 }
   
   </style>
@@ -67,16 +85,20 @@
 <script>
   const pressed = [];
   const secretCode = 'boo';
+  const codeDisplay = document.querySelector('p');
+  const text = document.querySelector('.text-div');
+
  
 
   window.addEventListener('keyup', (e) => {
-    console.log(e.key); // logs which key is being pressed
     pressed.push(e.key);
     pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length); // starts from the end
     if(pressed.join('').includes(secretCode)) {
+      codeDisplay.innerHTML =`${secretCode}`;
+      text.innerHTML= 'The code word is:'
       cornify_add();
     }
-    console.log(pressed.join(''));
+   
   })
 
 
